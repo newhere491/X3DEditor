@@ -79,17 +79,17 @@ class Sq3DEditor {
             Sq3DEditor.KeyPressed <- null;
             Console.Print("[#33ff33]Info: [#ffffff]Editing stopped.");
             // create the header of the text
-            local Maintext = "UI." + (typeof e).slice(3, (typeof e).len()) + "(\"" + e.id + "\")";
-
+            local variable = "element";
+            local header = "local " + variable + " = UI." + (typeof e == "instance" ? "Canvas" : (typeof e).slice(3, (typeof e).len())) + "(\"" + e.id + "\");\n";
             // add the flag
-            local text = Maintext + ".AddFlags(GUI_FLAG_3D_ENTITY);\n";
+            local text = variable + ".AddFlags(GUI_FLAG_3D_ENTITY);\n";
             // set the position
-            text += Maintext + ".Position3D = Vector(" + e.Position3D.X + ", " + e.Position3D.Y + ", " + e.Position3D.Z + ");\n";
+            text += variable + ".Position3D = Vector(" + e.Position3D.X + ", " + e.Position3D.Y + ", " + e.Position3D.Z + ");\n";
             // set the rotation
-            text += Maintext + ".Rotation3D = Vector(" + e.Rotation3D.X + ", " + e.Rotation3D.Y + ", " + e.Rotation3D.Z + ");\n";
+            text += variable + ".Rotation3D = Vector(" + e.Rotation3D.X + ", " + e.Rotation3D.Y + ", " + e.Rotation3D.Z + ");\n";
             // set the size
-            text += Maintext + ".Size3D = Vector(" + e.Size3D.X + ", " + e.Size3D.Y + ", " + e.Size3D.Z + ");";
-            Console.Print(text);
+            text += variable + ".Size3D = Vector(" + e.Size3D.X + ", " + e.Size3D.Y + ", " + e.Size3D.Z + ");";
+            Console.Print(header + text);
 
             // copying the text to the clipboard
             System.SetClipboardText(text);
