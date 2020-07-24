@@ -92,7 +92,7 @@ class Sq3DEditor {
             Console.Print(header + text);
 
             // copying the text to the clipboard
-            System.SetClipboardText(text);
+            System.SetClipboardText(header + text);
             Console.Print("[#33ff33]Scs: [#ffffff]Copied to clipboard!");
 
         }
